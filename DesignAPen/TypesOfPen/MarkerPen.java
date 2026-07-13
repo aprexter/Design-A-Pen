@@ -3,19 +3,21 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.PenType;
+import Projects.DesignAPen.Strategies.SmoothWritingBehaviour;
+import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
 public class MarkerPen extends Pen implements RefilPen {
 
     private Refil refil;
     private boolean canChangeRefil;
-    private MarkerPen() {
-        super(PenType.MARKER);
+    private MarkerPen(WriteBeahviourStrategies writeBeahviourStrategies) {
+        super(PenType.MARKER, writeBeahviourStrategies);
     }
 
     public static class Builder extends PenBuilder<MarkerPen> {
         @Override
         public MarkerPen build() {
-            MarkerPen markerPen=new MarkerPen();
+            MarkerPen markerPen=new MarkerPen(new SmoothWritingBehaviour());
             markerPen.refil=refil;
             markerPen.canChangeRefil=canChangeRefil;
             return markerPen;
@@ -36,10 +38,7 @@ public class MarkerPen extends Pen implements RefilPen {
 
     }
 
-    @Override
-    public void write() {
 
-    }
 
     @Override
     public Color getColor() {

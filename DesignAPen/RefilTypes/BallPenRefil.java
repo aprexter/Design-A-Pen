@@ -14,7 +14,7 @@ public class BallPenRefil extends Refil {
 
     @Override
     public Color getColor() {
-        return null;
+        return this.getInk().getColor();
     }
 
     @Override

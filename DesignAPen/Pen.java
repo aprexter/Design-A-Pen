@@ -3,6 +3,8 @@ package Projects.DesignAPen;
 import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.Company;
 import Projects.DesignAPen.EnumsOfPen.PenType;
+import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
 public abstract class Pen {
 
@@ -29,15 +31,19 @@ public abstract class Pen {
     public void setPenType(PenType penType) {
         this.penType = penType;
     }
-
+    private String name;
     private double price;
     private Company company;
     private PenType penType;
+    private WriteBeahviourStrategies writeBeahviourStrategies;
 
-    public Pen(PenType penType) {
+    public Pen(PenType penType, WriteBeahviourStrategies writeBeahviourStrategies) {
+        this.writeBeahviourStrategies=writeBeahviourStrategies;
         this.penType = penType;
     }
 
-    public abstract void write();
+    public void write(){
+        this.writeBeahviourStrategies.write();
+    }
     public abstract Color getColor();
 }

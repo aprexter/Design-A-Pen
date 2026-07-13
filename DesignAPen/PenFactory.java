@@ -1,5 +1,6 @@
 package Projects.DesignAPen;
 
+import Projects.DesignAPen.Strategies.PressurSensitiveWritingBehaviour;
 import Projects.DesignAPen.TypesOfPen.BallPen;
 import Projects.DesignAPen.TypesOfPen.FountainPen;
 import Projects.DesignAPen.TypesOfPen.GellPen;
@@ -21,6 +22,6 @@ public class PenFactory {
         return new MarkerPen.Builder();
     }
     public static FountainPen createFountainPen() {
-        return new FountainPen();
+        return new FountainPen(new PressurSensitiveWritingBehaviour());
     }
 }

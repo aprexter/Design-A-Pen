@@ -3,19 +3,21 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.PenType;
+import Projects.DesignAPen.Strategies.PressurSensitiveWritingBehaviour;
+import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
 public class BallPen extends Pen implements RefilPen {
 
     private Refil refil;
     private boolean canChangeRefil;
-    private BallPen() {
-        super(PenType.BALL);
+    private BallPen(WriteBeahviourStrategies writeBeahviourStrategies) {
+        super(PenType.BALL,writeBeahviourStrategies);
     }
 
-    public static class Builder extends PenBuilder<BallPen> {
+    public static class Builder extends PenBuilder {
         @Override
         public BallPen build() {
-            BallPen ballPen=new BallPen();
+            BallPen ballPen=new BallPen(new PressurSensitiveWritingBehaviour());
             ballPen.refil=refil;
             this.canChangeRefil=canChangeRefil;
             return ballPen;
@@ -31,7 +33,7 @@ public class BallPen extends Pen implements RefilPen {
 
     @Override
     public Color getColor() {
-        return null;
+        return this.refil.getColor();
     }
 
     @Override
