@@ -1,4 +1,4 @@
-package Projects.DesignAPen;
+package Projects.DesignAPen.EnumsOfPen;
 
 public enum PenType {
     GELL,

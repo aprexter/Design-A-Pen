@@ -1,4 +1,8 @@
-package Projects.DesignAPen;
+package Projects.DesignAPen.TypesOfPen;
+
+import Projects.DesignAPen.EnumsOfPen.Color;
+import Projects.DesignAPen.Pen;
+import Projects.DesignAPen.EnumsOfPen.PenType;
 
 public class FountainPen extends Pen {
 
@@ -13,7 +17,7 @@ public class FountainPen extends Pen {
     }
 
     @Override
-    public COLOR getColor() {
+    public Color getColor() {
         return null;
     }
 }
