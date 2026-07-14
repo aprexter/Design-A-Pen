@@ -3,6 +3,7 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.PenType;
+import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
 import Projects.DesignAPen.RefilTypes.GellPenRefil;
 import Projects.DesignAPen.Strategies.FlowlyWritingBehaviour;
 import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
@@ -11,24 +12,22 @@ import java.lang.reflect.GenericArrayType;
 import java.sql.Ref;
 
 public class GellPen extends Pen implements RefilPen<GellPenRefil> {
-    private Refil  refil;
+    private GellPenRefil  refil;
     private boolean canChangeRefil;
 
-    private GellPen(WriteBeahviourStrategies writeBeahviourStrategies) {
-        super(PenType.GELL,writeBeahviourStrategies);
+    private GellPen(WritingBehaviour writingBehaviour) {
+        super(PenType.GELL,writingBehaviour);
     }
-    public static class Builder extends PenBuilder<GellPen,GellPenRefil> {
+    public static class Builder extends PenBuilder<GellPenRefil,GellPen> {
         @Override
         public GellPen build(){
-            GellPen gellPen=new GellPen(new FlowlyWritingBehaviour());
+            GellPen gellPen=new GellPen(writingBehaviour);
             gellPen.refil=refil;
+            gellPen.refil.getInk().setColor(color);
             gellPen.canChangeRefil=canChangeRefil;
             return gellPen;
         }
     }
-
-
-
 
 
     @Override
@@ -41,14 +40,15 @@ public class GellPen extends Pen implements RefilPen<GellPenRefil> {
         return this.canChangeRefil;
     }
 
+
+
     @Override
-    public void changeRefil(Refil newRefil) {
-
+    public void changeRefil(GellPenRefil newRefil) {
+        this.refil=newRefil;
     }
-
 
     @Override
     public Color getColor() {
-        return null;
+        return this.refil.getInk().getColor();
     }
 }

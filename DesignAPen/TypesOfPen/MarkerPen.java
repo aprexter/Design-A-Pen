@@ -3,45 +3,49 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.PenType;
+import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.RefilTypes.MarkerRefil;
 import Projects.DesignAPen.Strategies.SmoothWritingBehaviour;
 import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
-public class MarkerPen extends Pen implements RefilPen {
+public class MarkerPen extends Pen implements RefilPen<MarkerRefil> {
 
-    private Refil refil;
+    private MarkerRefil refil;
     private boolean canChangeRefil;
-    private MarkerPen(WriteBeahviourStrategies writeBeahviourStrategies) {
-        super(PenType.MARKER, writeBeahviourStrategies);
+    private MarkerPen(WritingBehaviour writingBehaviour) {
+        super(PenType.MARKER,writingBehaviour);
     }
 
-    public static class Builder extends PenBuilder<MarkerPen> {
+    public static class Builder extends PenBuilder<MarkerRefil,MarkerPen> {
         @Override
         public MarkerPen build() {
-            MarkerPen markerPen=new MarkerPen(new SmoothWritingBehaviour());
+            MarkerPen markerPen=new MarkerPen(WritingBehaviour.HIGHLIGHTER);
             markerPen.refil=refil;
+            markerPen.refil.getInk().setColor(this.color);
             markerPen.canChangeRefil=canChangeRefil;
             return markerPen;
         }
     }
+
+
+
     @Override
-    public Refil getRefil() {
-        return null;
+    public MarkerRefil getRefil() {
+        return this.refil;
     }
 
     @Override
     public boolean canChangeRefil() {
-        return false;
+        return this.canChangeRefil;
     }
 
     @Override
-    public void changeRefil(Refil newRefil) {
-
+    public void changeRefil(MarkerRefil newRefil) {
+        this.refil=newRefil;
     }
-
-
 
     @Override
     public Color getColor() {
-        return null;
+        return this.refil.getInk().getColor();
     }
 }

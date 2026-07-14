@@ -1,17 +1,17 @@
 package Projects.DesignAPen;
 
 import Projects.DesignAPen.EnumsOfPen.Color;
+import Projects.DesignAPen.EnumsOfPen.NipType;
 import Projects.DesignAPen.EnumsOfPen.PenType;
 
 public abstract class Ink{
 
 
-    private Color color;
-    private PenType penType;
-    private double density;
-
+    private Color color=Color.GREEN;
+    private PenType penType=PenType.BALL;
+    private double density=3.0;
     public Color getColor() {
-        return color;
+        return this.color;
     }
 
     public void setColor(Color color) {
@@ -29,6 +29,7 @@ public abstract class Ink{
     public double getDensity() {
         return density;
     }
+
 
     public void setDensity(double density) {
         this.density = density;

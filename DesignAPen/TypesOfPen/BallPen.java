@@ -3,51 +3,50 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.PenType;
+import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.RefilTypes.BallPenRefil;
+import Projects.DesignAPen.RefilTypes.GellPenRefil;
 import Projects.DesignAPen.Strategies.PressurSensitiveWritingBehaviour;
 import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
-public class BallPen extends Pen implements RefilPen {
+public class BallPen extends Pen implements RefilPen<BallPenRefil> {
 
-    private Refil refil;
+    private BallPenRefil refil;
     private boolean canChangeRefil;
-    private BallPen(WriteBeahviourStrategies writeBeahviourStrategies) {
-        super(PenType.BALL,writeBeahviourStrategies);
+
+    private BallPen(WritingBehaviour writingBehaviour) {
+        super(PenType.BALL,writingBehaviour);
     }
 
-    public static class Builder extends PenBuilder {
+    public static class Builder extends PenBuilder<BallPenRefil,BallPen> {
         @Override
         public BallPen build() {
-            BallPen ballPen=new BallPen(new PressurSensitiveWritingBehaviour());
+            BallPen ballPen=new BallPen(writingBehaviour);
             ballPen.refil=refil;
-            this.canChangeRefil=canChangeRefil;
+            ballPen.refil.getInk().setColor(color);
+            ballPen.canChangeRefil=canChangeRefil;
             return ballPen;
         }
     }
 
 
-
-    @Override
-    public void write() {
-
-    }
-
     @Override
     public Color getColor() {
-        return this.refil.getColor();
+        return this.refil.getInk().getColor();
     }
 
     @Override
-    public Refil getRefil() {
+    public BallPenRefil getRefil() {
         return this.refil;
     }
 
     @Override
     public boolean canChangeRefil() {
-        return false;
+        return this.canChangeRefil;
     }
 
     @Override
-    public void changeRefil(Refil newRefil) {
-
+    public void changeRefil(BallPenRefil newRefil) {
+        this.refil=newRefil;
     }
 }

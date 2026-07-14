@@ -35,15 +35,19 @@ public abstract class Pen {
     private double price;
     private Company company;
     private PenType penType;
-    private WriteBeahviourStrategies writeBeahviourStrategies;
+    public static WritingBehaviourRegistry writingBehaviourRegistry;
+    private WritingBehaviour writingBehaviour;
 
-    public Pen(PenType penType, WriteBeahviourStrategies writeBeahviourStrategies) {
-        this.writeBeahviourStrategies=writeBeahviourStrategies;
+
+
+
+    public Pen(PenType penType, WritingBehaviour writingBehaviour) {
+        this.writingBehaviour=writingBehaviour;
         this.penType = penType;
     }
 
     public void write(){
-        this.writeBeahviourStrategies.write();
+        this.writingBehaviourRegistry.getStrategies(writingBehaviour).write();
     }
     public abstract Color getColor();
 }

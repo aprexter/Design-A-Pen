@@ -21,7 +21,7 @@ public class PenFactory {
     public static MarkerPen.Builder createMarkerPen() {
         return new MarkerPen.Builder();
     }
-    public static FountainPen createFountainPen() {
-        return new FountainPen(new PressurSensitiveWritingBehaviour());
+    public static FountainPen.Builder createFountainPen() {
+        return new FountainPen.Builder();
     }
 }

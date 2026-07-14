@@ -5,7 +5,7 @@ import Projects.DesignAPen.EnumsOfPen.Radius;
 
 public class Nip {
     private Radius radius;
-    private NipType nipType;
+    private NipType nipType=NipType.BallPenNip;
 
     public Radius getRadius() {
         return radius;

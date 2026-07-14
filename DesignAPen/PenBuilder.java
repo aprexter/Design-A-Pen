@@ -1,29 +1,34 @@
 package Projects.DesignAPen;
 
 import Projects.DesignAPen.EnumsOfPen.Color;
+import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
 
 import java.sql.Ref;
 
-public abstract class PenBuilder {
+public abstract class PenBuilder<T extends Refil,R extends RefilPen<T>> {
 
-    protected Color color;
-    protected Refil refil;
-    protected boolean canChangeRefil;
+    protected Color color=Color.BLUE;
+    protected T refil=null;
+    protected boolean canChangeRefil=false;
+    protected WritingBehaviour writingBehaviour=WritingBehaviour.SMOOTH;
 
-    public PenBuilder color(Color color) {
+    public PenBuilder<T,R> setColor(Color color) {
         this.color = color;
         return this;
     }
 
-    public PenBuilder refil(Refil refil) {
+    public PenBuilder<T,R> setRefil(T refil) {
         this.refil = refil;
         return this;
     }
-
+    public PenBuilder<T,R> setWritingBehaviour(WritingBehaviour writingBehaviour) {
+        this.writingBehaviour = writingBehaviour;
+        return this;
+    }
     public PenBuilder canChangeRefil(boolean value) {
         this.canChangeRefil = value;
         return this;
     }
 
-    public abstract Pen build();
+    public abstract R build();
 }
