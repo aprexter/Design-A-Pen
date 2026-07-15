@@ -4,34 +4,20 @@ import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.NipType;
 import Projects.DesignAPen.EnumsOfPen.PenType;
 
-public abstract class Ink{
+public  class Ink{
 
 
-    private Color color=Color.GREEN;
-    private PenType penType=PenType.BALL;
-    private double density=3.0;
-    public Color getColor() {
-        return this.color;
-    }
-
+    private  Color color;
+    private  double density;
     public void setColor(Color color) {
-        this.color = color;
+        this.color=color;
     }
-
-    public PenType getPenType() {
-        return penType;
-    }
-
-    public void setPenType(PenType penType) {
-        this.penType = penType;
+    public Color getColor() {
+        return color;
     }
 
     public double getDensity() {
         return density;
     }
 
-
-    public void setDensity(double density) {
-        this.density = density;
-    }
 }

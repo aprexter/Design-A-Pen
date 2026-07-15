@@ -1,9 +1,7 @@
 package Projects.DesignAPen.TypesOfPen;
 
 import Projects.DesignAPen.*;
-import Projects.DesignAPen.EnumsOfPen.Color;
-import Projects.DesignAPen.EnumsOfPen.PenType;
-import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.RefilTypes.BallPenRefil;
 import Projects.DesignAPen.RefilTypes.GellPenRefil;
 import Projects.DesignAPen.Strategies.PressurSensitiveWritingBehaviour;
@@ -23,8 +21,12 @@ public class BallPen extends Pen implements RefilPen<BallPenRefil> {
         public BallPen build() {
             BallPen ballPen=new BallPen(writingBehaviour);
             ballPen.refil=refil;
-            ballPen.refil.getInk().setColor(color);
+            ballPen.refil.setInk(new Ink());
+
             ballPen.canChangeRefil=canChangeRefil;
+            ballPen.refil.getInk().setColor(color);
+            ballPen.refil.setNip(new Nip(NipType.BallPenNip, Radius.R90MM));
+
             return ballPen;
         }
     }
@@ -32,7 +34,7 @@ public class BallPen extends Pen implements RefilPen<BallPenRefil> {
 
     @Override
     public Color getColor() {
-        return this.refil.getInk().getColor();
+        return this.refil.getColor();
     }
 
     @Override

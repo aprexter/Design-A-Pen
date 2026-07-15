@@ -10,5 +10,6 @@ public enum Color {
     PINK,
     PURPLE,
     ORANGE,
-    INDIGO
+    INDIGO,
+    UNDEFINED_COLOR
 }

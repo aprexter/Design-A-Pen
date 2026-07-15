@@ -20,6 +20,7 @@ public class Customer {
 
 
         GellPen gellPen=PenFactory.createGellPen().setWritingBehaviour(WritingBehaviour.HIGHLIGHTER)
+                .setRefil(new GellPenRefil())
                 .setColor(Color.GREEN).build();
         System.out.println(gellPen.getColor());
         gellPen.write();

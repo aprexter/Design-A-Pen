@@ -6,6 +6,7 @@ public enum Radius {
     R55MM,
     R79MM,
     R90MM,
-    R150MM
+    R150MM,
+    UNDEFNED_RADIUS
 
 }

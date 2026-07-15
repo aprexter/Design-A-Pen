@@ -8,5 +8,6 @@ public enum WritingBehaviour {
     VELOCITY_SENSITIVE,
     HIGHLIGHTER,
     DASHED,             // Draws dashed lines
-    TEXTURED
+    TEXTURED,
+    UNDEFINED_BEHAVIOUR
 }

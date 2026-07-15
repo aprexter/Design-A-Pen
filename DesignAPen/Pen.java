@@ -28,20 +28,18 @@ public abstract class Pen {
         return penType;
     }
 
-    public void setPenType(PenType penType) {
-        this.penType = penType;
-    }
+
     private String name;
     private double price;
     private Company company;
-    private PenType penType;
+    private final PenType penType;
     public static WritingBehaviourRegistry writingBehaviourRegistry;
-    private WritingBehaviour writingBehaviour;
+    private final WritingBehaviour writingBehaviour;
 
 
 
 
-    public Pen(PenType penType, WritingBehaviour writingBehaviour) {
+    protected Pen(PenType penType, WritingBehaviour writingBehaviour) {
         this.writingBehaviour=writingBehaviour;
         this.penType = penType;
     }

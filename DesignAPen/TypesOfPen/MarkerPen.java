@@ -1,9 +1,7 @@
 package Projects.DesignAPen.TypesOfPen;
 
 import Projects.DesignAPen.*;
-import Projects.DesignAPen.EnumsOfPen.Color;
-import Projects.DesignAPen.EnumsOfPen.PenType;
-import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.RefilTypes.MarkerRefil;
 import Projects.DesignAPen.Strategies.SmoothWritingBehaviour;
 import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
@@ -21,7 +19,11 @@ public class MarkerPen extends Pen implements RefilPen<MarkerRefil> {
         public MarkerPen build() {
             MarkerPen markerPen=new MarkerPen(WritingBehaviour.HIGHLIGHTER);
             markerPen.refil=refil;
-            markerPen.refil.getInk().setColor(this.color);
+            markerPen.refil.setNip(new Nip(NipType.MarkerPenNIp, Radius.R90MM));
+            markerPen.refil.setInk(new Ink());
+
+            markerPen.refil.getInk().setColor(color);
+
             markerPen.canChangeRefil=canChangeRefil;
             return markerPen;
         }
@@ -46,6 +48,6 @@ public class MarkerPen extends Pen implements RefilPen<MarkerRefil> {
 
     @Override
     public Color getColor() {
-        return this.refil.getInk().getColor();
+        return this.refil.getColor();
     }
 }

@@ -4,5 +4,6 @@ public enum PenType {
     GELL,
     BALL,
     MARKER,
-    FOUNTAIN
+    FOUNTAIN,
+    UNDEFINED_PENTYPE
 }

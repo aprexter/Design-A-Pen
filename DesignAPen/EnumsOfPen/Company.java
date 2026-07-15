@@ -12,5 +12,6 @@ public enum Company {
     PENTONIC,
     HAUSER,
     PARKEX,
-    OSTRINO
+    OSTRINO,
+    UNDEFINED_COMPANY
 }

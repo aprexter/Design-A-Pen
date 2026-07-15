@@ -11,7 +11,6 @@ public abstract class PenBuilder<T extends Refil,R extends RefilPen<T>> {
     protected T refil=null;
     protected boolean canChangeRefil=false;
     protected WritingBehaviour writingBehaviour=WritingBehaviour.SMOOTH;
-
     public PenBuilder<T,R> setColor(Color color) {
         this.color = color;
         return this;
@@ -25,7 +24,7 @@ public abstract class PenBuilder<T extends Refil,R extends RefilPen<T>> {
         this.writingBehaviour = writingBehaviour;
         return this;
     }
-    public PenBuilder canChangeRefil(boolean value) {
+    public PenBuilder<T,R> canChangeRefil(boolean value) {
         this.canChangeRefil = value;
         return this;
     }

@@ -1,9 +1,7 @@
 package Projects.DesignAPen.TypesOfPen;
 
 import Projects.DesignAPen.*;
-import Projects.DesignAPen.EnumsOfPen.Color;
-import Projects.DesignAPen.EnumsOfPen.PenType;
-import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.RefilTypes.GellPenRefil;
 import Projects.DesignAPen.Strategies.FlowlyWritingBehaviour;
 import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
@@ -23,7 +21,10 @@ public class GellPen extends Pen implements RefilPen<GellPenRefil> {
         public GellPen build(){
             GellPen gellPen=new GellPen(writingBehaviour);
             gellPen.refil=refil;
+            gellPen.refil.setNip(new Nip(NipType.GellPenNip, Radius.R55MM));
+            gellPen.refil.setInk(new Ink());
             gellPen.refil.getInk().setColor(color);
+
             gellPen.canChangeRefil=canChangeRefil;
             return gellPen;
         }
@@ -49,6 +50,6 @@ public class GellPen extends Pen implements RefilPen<GellPenRefil> {
 
     @Override
     public Color getColor() {
-        return this.refil.getInk().getColor();
+        return this.refil.getColor();
     }
 }

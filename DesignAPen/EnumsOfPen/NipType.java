@@ -4,5 +4,6 @@ public enum NipType {
     BallPenNip,
     GellPenNip,
     FountainPenNip,
-    MarkerPenNIp
+    MarkerPenNIp,
+    UNDEIFNED_NIP
 }
