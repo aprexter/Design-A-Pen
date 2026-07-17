@@ -1,13 +1,9 @@
 package Projects.DesignAPen.TypesOfPen;
 
-import Projects.DesignAPen.EnumsOfPen.Color;
-import Projects.DesignAPen.EnumsOfPen.NipType;
-import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
+import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.Ink;
 import Projects.DesignAPen.Nip;
 import Projects.DesignAPen.Pen;
-import Projects.DesignAPen.EnumsOfPen.PenType;
-import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
 public class FountainPen extends Pen {
     private Ink ink;
@@ -15,23 +11,37 @@ public class FountainPen extends Pen {
     private Color color;
 
 
-    public FountainPen(WritingBehaviour writingBehaviour) {
+    private FountainPen(WritingBehaviour writingBehaviour) {
         super(PenType.FOUNTAIN,writingBehaviour);
     }
+    public static Builder getBuilder(){
+        return new Builder();
+    }
+
     public static class Builder {
         private WritingBehaviour writingBehaviour=WritingBehaviour.SMOOTH;
-        private Color color=Color.BLUE;
         private boolean canChangeInk=false;
         private Ink ink;
         private Nip nip;
+        private String penName;
+        private double price;
+        private Company company;
 
-
-
-
-        public Builder setColor(Color color) {
-            this.color = color;
+        public Builder penName(String penName) {
+            this.penName=penName;
             return this;
         }
+        public Builder setPrice(double price) {
+            this.price=price;
+            return this;
+        }
+        public Builder setCompany(Company company) {
+            this.company=company;
+            return this;
+        }
+
+
+
         public Builder canChangeInk(Boolean canChangeInk) {
             this.canChangeInk=canChangeInk;
             return this;
@@ -40,7 +50,7 @@ public class FountainPen extends Pen {
             this.ink = ink;
             return this;
         }
-        public Builder setNipType(Nip nip){
+        public Builder setNip(Nip nip){
             this.nip=nip;
             return this;
         }
@@ -53,7 +63,9 @@ public class FountainPen extends Pen {
             FountainPen fountainPen=new FountainPen(writingBehaviour);
             fountainPen.nip=nip;
             fountainPen.ink=ink;
-            fountainPen.ink.setColor(color);
+            fountainPen.setCompany(company);
+            fountainPen.setName(penName);
+            fountainPen.setPrice(price);
             return fountainPen;
         }
     }

@@ -3,11 +3,7 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.RefilTypes.GellPenRefil;
-import Projects.DesignAPen.Strategies.FlowlyWritingBehaviour;
-import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
-import java.lang.reflect.GenericArrayType;
-import java.sql.Ref;
 
 public class GellPen extends Pen implements RefilPen<GellPenRefil> {
     private GellPenRefil  refil;
@@ -21,9 +17,11 @@ public class GellPen extends Pen implements RefilPen<GellPenRefil> {
         public GellPen build(){
             GellPen gellPen=new GellPen(writingBehaviour);
             gellPen.refil=refil;
-            gellPen.refil.setNip(new Nip(NipType.GellPenNip, Radius.R55MM));
-            gellPen.refil.setInk(new Ink());
-            gellPen.refil.getInk().setColor(color);
+            gellPen.setName(name);
+            gellPen.setCompany(company);
+            gellPen.setPrice(price);
+
+
 
             gellPen.canChangeRefil=canChangeRefil;
             return gellPen;

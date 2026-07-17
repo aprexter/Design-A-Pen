@@ -4,7 +4,6 @@ import Projects.DesignAPen.EnumsOfPen.Color;
 import Projects.DesignAPen.EnumsOfPen.Company;
 import Projects.DesignAPen.EnumsOfPen.PenType;
 import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
-import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
 
 public abstract class Pen {
 
@@ -28,6 +27,15 @@ public abstract class Pen {
         return penType;
     }
 
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     private String name;
     private double price;

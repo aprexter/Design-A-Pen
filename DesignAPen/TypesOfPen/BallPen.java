@@ -3,9 +3,7 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.RefilTypes.BallPenRefil;
-import Projects.DesignAPen.RefilTypes.GellPenRefil;
-import Projects.DesignAPen.Strategies.PressurSensitiveWritingBehaviour;
-import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
+
 
 public class BallPen extends Pen implements RefilPen<BallPenRefil> {
 
@@ -21,12 +19,10 @@ public class BallPen extends Pen implements RefilPen<BallPenRefil> {
         public BallPen build() {
             BallPen ballPen=new BallPen(writingBehaviour);
             ballPen.refil=refil;
-            ballPen.refil.setInk(new Ink());
-
             ballPen.canChangeRefil=canChangeRefil;
-            ballPen.refil.getInk().setColor(color);
-            ballPen.refil.setNip(new Nip(NipType.BallPenNip, Radius.R90MM));
-
+            ballPen.setName(name);
+            ballPen.setCompany(company);
+            ballPen.setPrice(price);
             return ballPen;
         }
     }

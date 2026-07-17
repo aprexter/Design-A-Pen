@@ -3,8 +3,7 @@ package Projects.DesignAPen.TypesOfPen;
 import Projects.DesignAPen.*;
 import Projects.DesignAPen.EnumsOfPen.*;
 import Projects.DesignAPen.RefilTypes.MarkerRefil;
-import Projects.DesignAPen.Strategies.SmoothWritingBehaviour;
-import Projects.DesignAPen.Strategies.WriteBeahviourStrategies;
+
 
 public class MarkerPen extends Pen implements RefilPen<MarkerRefil> {
 
@@ -19,10 +18,9 @@ public class MarkerPen extends Pen implements RefilPen<MarkerRefil> {
         public MarkerPen build() {
             MarkerPen markerPen=new MarkerPen(WritingBehaviour.HIGHLIGHTER);
             markerPen.refil=refil;
-            markerPen.refil.setNip(new Nip(NipType.MarkerPenNIp, Radius.R90MM));
-            markerPen.refil.setInk(new Ink());
-
-            markerPen.refil.getInk().setColor(color);
+            markerPen.setName(name);
+            markerPen.setCompany(company);
+            markerPen.setPrice(price);
 
             markerPen.canChangeRefil=canChangeRefil;
             return markerPen;

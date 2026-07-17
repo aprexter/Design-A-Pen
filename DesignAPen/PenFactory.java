@@ -1,6 +1,5 @@
 package Projects.DesignAPen;
 
-import Projects.DesignAPen.Strategies.PressurSensitiveWritingBehaviour;
 import Projects.DesignAPen.TypesOfPen.BallPen;
 import Projects.DesignAPen.TypesOfPen.FountainPen;
 import Projects.DesignAPen.TypesOfPen.GellPen;

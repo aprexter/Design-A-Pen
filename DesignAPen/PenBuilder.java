@@ -1,18 +1,30 @@
 package Projects.DesignAPen;
 
-import Projects.DesignAPen.EnumsOfPen.Color;
+import Projects.DesignAPen.EnumsOfPen.Company;
 import Projects.DesignAPen.EnumsOfPen.WritingBehaviour;
 
-import java.sql.Ref;
+
 
 public abstract class PenBuilder<T extends Refil,R extends RefilPen<T>> {
 
-    protected Color color=Color.BLUE;
+    protected String name;
+    protected double price;
+    protected Company company;
     protected T refil=null;
     protected boolean canChangeRefil=false;
     protected WritingBehaviour writingBehaviour=WritingBehaviour.SMOOTH;
-    public PenBuilder<T,R> setColor(Color color) {
-        this.color = color;
+
+
+    public PenBuilder<T,R> setName(String name){
+        this.name = name;
+        return this;
+    }
+    public PenBuilder<T,R> setPrice(double price){
+        this.price = price;
+        return this;
+    }
+    public PenBuilder<T,R> setCompany(Company company){
+        this.company = company;
         return this;
     }
 
